@@ -7,7 +7,30 @@
 | 项目 | 目标框架 | 内容 |
 |---|---|---|
 | `src/CatClaw.Shared.Core` | `net11.0`（纯 C#，无 MAUI） | JS 运行时基类等与 UI 无关的共享逻辑 |
-| `src/CatClaw.Shared.Maui` | `net11.0;net11.0-android;net11.0-windows10.0.19041.0`（Windows 条件） | 转换器、行为等 MAUI 层共享代码 |
+| `src/CatClaw.Shared.Maui` | `net11.0;net11.0-android;net11.0-windows10.0.19041.0`（Windows 条件） | **共享 UI 库**：转换器、行为、SafeArea 辅助 |
+
+## 共享 UI 库组件（CatClaw.Shared.Maui）
+
+**Converters（转换器）** — `CatClaw.Shared.Maui.Converters`
+- `IntToBoolConverter` 索引相等判断（Tab 选中态）
+- `InvertedBoolConverter` 布尔取反
+- `StringToBoolConverter` / `InvertedStringToBoolConverter` 非空判断及取反
+- `IndexConverter` 反射提取 Index/Id/TrackNumber/Sequence 序号
+- `DurationConverter` 时长格式化 mm:ss
+- `InitialConverter` / `CoverArtConverter` / `PlaceholderColorConverter` / `PlaybackCountConverter` / `NameToLetterConverter` 封面占位、占位色、计数、索引字母
+- `AutoScanToggleColorConverter` / `ToggleKnobPositionConverter` / `ProgressToWidthConverter` 开关与进度条
+- `DownloadStatusConverter` 下载状态可见性
+
+**Controls（行为）** — `CatClaw.Shared.Maui.Controls`
+- `PressFeedbackBehavior` 点击按压反馈（按下缩小+变暗，松开 Q 弹回弹）
+- `HideScrollBarBehavior` 隐藏 Android 端 CollectionView 滚动条
+- `SquareBehavior` 高度同步为宽度（正方形封面）
+- `SafeAreaPaddingBehavior` 内容顶部叠加系统栏高度
+
+**Helpers** — `CatClaw.Shared.Maui.Helpers`
+- `SafeAreaHelper` 跨平台系统栏高度（Top/Bottom/Left Inset）+ 变化事件，由平台代码 UpdateInsets 驱动
+
+依赖应用资源（主题色键）或应用服务的组件（如 `PressableCard`、`ViewToggleButton`、`ThemedIconExtension`、`ScrollPerformanceBehavior`、`BoolToColorConverter`）暂留 App 侧，待参数化后再上移。
 
 ## 接入方式
 
