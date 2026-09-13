@@ -11,7 +11,7 @@
 
 ## 接入方式
 
-两个 App 通过跨仓库相对路径 ProjectReference 引用（两仓库固定平级放在 `D:\Code` 下）：
+两个 App 通过跨仓库相对路径 ProjectReference 引用。克隆时请把三个仓库放在**同一个平级目录**下（如 `D:\Code`），相对路径才能解析：
 
 - App 的 Core/Data 工程 → 引用 `CatClaw.Shared.Core`
 - App 的 Maui 工程 → 引用 `CatClaw.Shared.Maui`（传递引用 Core）
