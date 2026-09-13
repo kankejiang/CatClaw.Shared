@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- 多目标 MAUI 类库：供猫爪音乐 / 猫爪影视的 Maui 工程共同引用。
+       目标框架结构与两个 App 的 Maui 工程保持一致（android 全平台，windows 仅 Windows 构建机）。 -->
+  <PropertyGroup>
+    <TargetFrameworks>net11.0;net11.0-android</TargetFrameworks>
+    <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net11.0-windows10.0.19041.0</TargetFrameworks>
+
+    <RootNamespace>CatClaw.Shared.Maui</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>15.0</LangVersion>
+
+    <!-- 平台最低版本与两个 App 保持一致（App 升级时同步） -->
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">31.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 版本由 MAUI 工作负载的 $(MauiVersion) 提供（与两个 App 的写法一致），避免 MA002 -->
+    <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CatClaw.Shared.Core\CatClaw.Shared.Core.csproj" />
+  </ItemGroup>
+
+</Project>

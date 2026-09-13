@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net11.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <LangVersion>15.0</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Jint JS 引擎：供 JsRuntimeServiceBase 使用。版本必须与猫爪音乐 / 猫爪影视
+         各自 Core 项目的引用保持一致（当前统一 4.16.0 + Acornima 1.7.0）。
+         升级时三处（本文件 + 两个 App 的 Core.csproj）需同步。 -->
+    <PackageReference Include="Jint" Version="4.16.0" />
+    <PackageReference Include="Acornima" Version="1.7.0" />
+  </ItemGroup>
+
+</Project>
