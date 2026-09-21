@@ -3,3 +3,22 @@ obj/
 .vs/
 *.user
 *.suo
+
+# ---- AI 工具产物（本地缓存/记忆，不入库）----
+.workbuddy/
+.trae/
+.reasonix/
+.claude/
+.cursor/
+.codebuddy/
+.codeium/
+.gemini/
+.windsurf/
+.aider*
+.cline*
+.continue/
+.openclaw*
+.autoclaw*
+CLAUDE.md
+CLAUDE.local.md
+AGENTS.md
