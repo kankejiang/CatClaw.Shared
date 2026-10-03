@@ -4,6 +4,10 @@ obj/
 *.user
 *.suo
 
+# 构建/部署产物（2026-10-03 补：与 CatClawVideo 同规则）
+# src/CatClaw.Shared.{Core,Maui}/build/ 一直在工作区里当未跟踪文件晃着，实为 MSBuild 输出。
+build/
+
 # ---- AI 工具产物（本地缓存/记忆，不入库）----
 .workbuddy/
 .trae/
